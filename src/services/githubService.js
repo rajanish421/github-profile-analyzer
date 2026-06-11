@@ -4,13 +4,15 @@ const axios = require("axios");
 
 const getGithubProfile = async (userName)=>{
     try {
+
+    //    console.log("called");
         
-        const response = await axios.get(`https://api.github.com/users/${username}`);
-        console.log(response);
-        // return response;
+        const response = await axios.get(`https://api.github.com/users/${userName}`);
+        // console.log(response.data);
+        return response.data;
 
     } catch (error) {
-        throw error;
+        console.log("Error" + error);
     }
 };
 
