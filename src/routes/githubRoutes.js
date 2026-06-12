@@ -1,5 +1,5 @@
 const express = require("express");
-const { getGithubProfileController, analyzeProfileController, getAllAnalyzedProfiles } = require("../controllers/githubController");
+const { getGithubProfileController, analyzeProfileController, getAllAnalyzedProfiles, getSingleProfileController } = require("../controllers/githubController");
 
 const githubRouter = express.Router();
 
@@ -7,6 +7,8 @@ const githubRouter = express.Router();
 githubRouter.get("/profile_analyze/:userName",analyzeProfileController);
 
 githubRouter.get("/get_analyzed_profiles",getAllAnalyzedProfiles);
+
+githubRouter.get("/get_single_profile/:userName",getSingleProfileController);
 
 
 

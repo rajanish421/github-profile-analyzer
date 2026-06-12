@@ -36,6 +36,8 @@ const {getGithubProfile} = require("../services/githubService");
 // };
 
 
+// analyzed profile by username
+
 const analyzeProfileController = async(req,res)=>{
     try {
         
@@ -45,6 +47,13 @@ const analyzeProfileController = async(req,res)=>{
         const userName = req.params.userName;
 
         const profile = await getGithubProfile(userName);
+
+        if(!profile){
+            return res.status(404).json({
+                status:false,
+                message:"profile not found"
+            });
+        }
 
         // console.log(profile.created_at);
 
@@ -145,6 +154,9 @@ const analyzeProfileController = async(req,res)=>{
 };
 
 
+
+// get all analyzed profiles
+
 const getAllAnalyzedProfiles = async(req,res)=>{
     try {
         
@@ -166,4 +178,43 @@ const getAllAnalyzedProfiles = async(req,res)=>{
 };
 
 
-module.exports = {analyzeProfileController,getAllAnalyzedProfiles};
+// get single profile by username
+
+const getSingleProfileController = async(req,res)=>{
+    try {
+        
+        const userName = req.params.userName;
+
+        console.log(userName);
+
+        // const query = `
+        // SELECT * FROM github_profiles WHERE username = ?
+        // `;
+         const [rows] = await pool.query(
+        'SELECT * FROM github_profiles WHERE username=?',
+        [userName]
+    );
+
+      if(rows.length === 0){
+        return res.status(404).json({
+            message:"Profile not found"
+        });
+    };
+
+    res.status(200).json({
+        status:true,
+        message:"fetch successfully",
+        data:rows[0]
+    });
+
+
+    } catch (error) {
+          res.status(500).json({
+            status:false,
+            message:error
+        });
+    }
+};
+
+
+module.exports = {analyzeProfileController,getAllAnalyzedProfiles,getSingleProfileController};
