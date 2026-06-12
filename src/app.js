@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json());
 
 
+// test db
 
 app.get("/db-test", async (req, res) => {
   try {
@@ -23,6 +24,15 @@ app.get("/db-test", async (req, res) => {
       error: error.message
     });
   }
+});
+
+// test running apis
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "GitHub Profile Analyzer API is running"
+  });
 });
 
 
