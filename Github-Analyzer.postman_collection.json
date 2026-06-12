@@ -1,0 +1,73 @@
+{
+  "info": {
+    "_postman_id": "da63feaf-0bce-4884-a8d7-37a2417d1c92",
+    "name": "Github-Analyzer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34899481"
+  },
+  "item": [
+    {
+      "name": "Analyze Profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/github/profile_analyze/rajanish421",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "github",
+            "profile_analyze",
+            "rajanish421"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Analyzed Profile",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/api/github/get_single_profile/rajanish421",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "github",
+            "get_single_profile",
+            "rajanish421"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get all analyzed profiles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:3000/api/github/get_analyzed_profiles",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "github",
+            "get_analyzed_profiles"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
