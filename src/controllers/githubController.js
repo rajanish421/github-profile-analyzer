@@ -131,7 +131,8 @@ const analyzeProfileController = async(req,res)=>{
 
             res.status(201).json({
                 status:true,
-                message:"successfully created",
+                message:"successfully analyzed profile",
+                data:profile
             });
 
 
@@ -144,4 +145,25 @@ const analyzeProfileController = async(req,res)=>{
 };
 
 
-module.exports = {getGithubProfileController,analyzeProfileController};
+const getAllAnalyzedProfiles = async(req,res)=>{
+    try {
+        
+
+         const [rows] = await pool.query("SELECT * FROM github_profiles");
+
+         res.status(201).json({
+                status:true,
+                message:"successfully analyzed profile",
+                data:rows
+            });
+
+    } catch (error) {
+           res.status(500).json({
+            status:false,
+            message:error
+        });
+    }
+};
+
+
+module.exports = {analyzeProfileController,getAllAnalyzedProfiles};
