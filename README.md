@@ -4,7 +4,9 @@ A backend API project that fetches GitHub user profile data, analyzes key metric
 
 ## Live Demo
 
-Deployed Link: https://github-profile-analyzer-ancw.onrender.com
+[Live Demo](https://github-profile-analyzer-ancw.onrender.com)
+
+> Note: This is hosted on Render free tier, so the first request can take a short time if the service is waking up.
 
 ## Why this project stands out
 
@@ -77,11 +79,28 @@ This app expects a MySQL table named `github_profiles` with fields used in the c
 - `account_age_days`
 - `profile_url`
 
+Example schema:
+
+```sql
+CREATE TABLE github_profiles (
+  username VARCHAR(255) PRIMARY KEY,
+  name VARCHAR(255),
+  followers INT DEFAULT 0,
+  following INT DEFAULT 0,
+  public_repos INT DEFAULT 0,
+  public_gists INT DEFAULT 0,
+  account_age_days INT DEFAULT 0,
+  profile_url TEXT
+);
+```
+
 ## Getting Started
 
 ### 1) Clone and install dependencies
 
 ```bash
+git clone https://github.com/rajanish421/github-profile-analyzer.git
+cd github-profile-analyzer
 npm install
 ```
 
@@ -126,5 +145,6 @@ This project demonstrates practical backend engineering skills:
 
 You can import:
 
-`/home/runner/work/github-profile-analyzer/github-profile-analyzer/rajanish421/github-profile-analyzer/Github-Analyzer.postman_collection.json`
+`./Github-Analyzer.postman_collection.json`
 
+This file is available in the project root and contains ready-to-use requests for all main endpoints.
