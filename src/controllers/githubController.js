@@ -48,6 +48,9 @@ const analyzeProfileController = async(req,res)=>{
 
         const profile = await getGithubProfile(userName);
 
+        console.log(profile);
+        
+
         if(!profile){
             return res.status(404).json({
                 status:false,
@@ -146,10 +149,12 @@ const analyzeProfileController = async(req,res)=>{
 
 
     } catch (error) {
-          res.status(500).json({
-            status:false,
-            message:error
-        });
+        return res.status(500).json({
+        status: false,
+        statusCode: error.response?.status,
+        message: error.message,
+        githubResponse: error.response?.data
+    });
     }
 };
 

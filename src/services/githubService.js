@@ -13,10 +13,7 @@ const getGithubProfile = async (userName)=>{
 
     } catch (error) {
         console.log("Error" + error);
-        res.status(500).json({
-        success:false,
-        error:error.response?.data || error.message
-    });
+        throw error;
     }
 };
 
